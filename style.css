@@ -30,3 +30,15 @@ header {
     bottom: 0;
     right: 0;
 }
+
+
+main {
+    display: grid;
+
+}
+.book-card {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
