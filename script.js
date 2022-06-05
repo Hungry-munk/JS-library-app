@@ -2,23 +2,29 @@ const Main = document.querySelector('main')
 const AddBtn = document.getElementById('addBtn')
 const Modal = document.querySelector('.form-div')
 const Overaly = document.getElementById('overlay')
+const SubmitBtn = document.getElementById('submit-btn')
+
 // declare empty library 
 let library = [];
 
 
-AddBtn.addEventListener('click',()=>{
-    Modal.classList.add('div-form-open')
-    Overaly.style.visibility = 'visible'
-})
-
-Overaly.addEventListener('click',()=>{
-    Modal.classList.remove('div-form-open')
-    Overaly.style.visibility = 'hidden'
-})
-
+AddBtn.addEventListener('click',()=>ShowModal())
+Overaly.addEventListener('click',()=>RemoveModal())
 document.addEventListener('keydown', e =>{
-        if (e.key === 'Escape' && Overaly.style.visibility == 'visible')RemoveModal()
-    });
+    if (e.key === 'Escape' && Overaly.style.visibility == 'visible')RemoveModal()
+    if (e.key === '+' && Overaly.style.visibility == 'hidden')ShowModal()
+});
+SubmitBtn.addEventListener('click',()=>{
+    const Title = document.getElementById('modal-title').value
+    const Author = document.getElementById('modal-author').value
+    const Pages = document.getElementById('modal-pages').value
+    const Read =document.querySelector('.isRead').checked
+    CreateBook(Title,Author,Pages,Read)
+    CreateBooks()
+    RemoveModal()
+
+})
+
 // book object constructor 
 function Book (Title, Author, Pages, Read) {
     this.Title = Title;
@@ -116,11 +122,8 @@ function RemoveModal () {
     Overaly.style.visibility = 'hidden'
 }
 
-
-CreateBook('gggg','sdfsdf',454,false)
-CreateBook('ggg','asd',454,false)
-CreateBook('gg','asdsad',567,true)
-CreateBook('fgg','asdsgg',867,true)
-
-CreateBooks()
+function ShowModal () {
+    Modal.classList.add('div-form-open')
+    Overaly.style.visibility = 'visible'
+}
 
