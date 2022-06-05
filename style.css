@@ -60,14 +60,34 @@ main {
     align-items: center;
     gap: 1rem;
     padding: 2rem;
+    max-width: 500px;
 }
 
 .remove-btn,
 .book-readStatus {
     width:80%;
     height: 2.4rem;
+
+/* css for the modal */
+}
+#form-div{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 3vh;
+
+    visibility: hidden;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* css for mobile */
 @media only screen and (max-device-width:1200px){
     #addBtn {
         bottom: 25px;

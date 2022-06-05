@@ -51,8 +51,7 @@ function ChangeReadStatus(button) {
     };
 };
 
-function displayBooks(){
-    RemoveBooks()
+function Renderbooks (){
     for (const book of library){
         const bookItem = document.createElement('div');
         bookItem.setAttribute('class','book-card')
@@ -65,6 +64,11 @@ function displayBooks(){
         
         Main.appendChild(bookItem)
     };
+};
+
+function CreateBooks(){
+    RemoveBooks()
+    Renderbooks()
 
     const RemoveBtns = document.querySelectorAll('.remove-btn')
     const ReadBtns = document.querySelectorAll('.book-readStatus')
@@ -75,8 +79,13 @@ function displayBooks(){
     
     RemoveBtns.forEach(button => {
         button.addEventListener('click',()=>{
-            button.parentNode.remove()
+            for (let el = 0 ; el < Main.children.length; el++) {
+                if (button.parentElement.dataset.index < Main.children[el].dataset.index){
+                    Main.children[el].dataset.index -= 1
+                };
+            };
             library.pop(button.parentElement.dataset.index)
+            button.parentNode.remove()
         });
     });
 
@@ -90,7 +99,7 @@ function RemoveBooks () {
 createBook('gggg','sdfsdf',454,false)
 createBook('ggg','asd',454,false)
 createBook('gg','asdsad',567,true)
-createBook('gg','asdsad',567,true)
+createBook('fgg','asdsgg',867,true)
 
-displayBooks()
+CreateBooks()
 
