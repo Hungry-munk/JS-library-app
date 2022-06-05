@@ -19,21 +19,31 @@ header {
 #addBtn {
     border-radius: 50%;
     position: fixed;
-    bottom: 0;
-    right: 0;
-
+    bottom: 50px;
+    right: 50px;
+    border: none;
+    width: 2rem;
+    height: 2rem;
 }
 
 #github {
     position: fixed;
-    bottom: 0;
-    right: 0;
+    bottom: 100px;
+    right: 50px;
+    width: 2rem;
+    height:2rem; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+
 .main {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 5vw;
 }
+
 
 main {
     display: grid;
@@ -46,7 +56,25 @@ main {
 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     gap: 1rem;
+    padding: 2rem;
+}
+
+.remove-btn,
+.book-readStatus {
+    width:80%;
+    height: 2.4rem;
+}
+
+@media only screen and (max-device-width:1200px){
+    #addBtn {
+        bottom: 25px;
+        right: 25px;
+    }
+    #github {
+        bottom: 75px;
+        right: 25px;
+    }
 }
