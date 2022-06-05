@@ -2,6 +2,13 @@
     box-sizing: border-box;
 }
 
+:root{
+    --gray:#f0eef1;
+    --green:#9fff9c;
+    --light-red: #ff9c9c;
+    --white: #fffbfb;
+}
+
 body,
 p,
 h1,
@@ -10,10 +17,15 @@ h3 {
     margin: 0;
     padding: 0;
 }
+body{
+    height: 100vh;
+    background-color: var(--gray);
+    font-family: 'Poppins', sans-serif;
+}
 
 header {
     padding: 1vw;
-    background: yellowgreen;
+    background: var(--white);
 }
 
 #addBtn {
@@ -52,7 +64,7 @@ main {
     gap: 2rem;
 }
 .book-card {
-    border: 1px solid red;
+    background-color: var(--white);
 
     display: flex;
     flex-direction: column;
@@ -68,17 +80,35 @@ main {
     width:80%;
     height: 2.4rem;
 
-/* css for the modal */
+/* Modal */
 }
-#form-div{
+.form-div{
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%) scale(0);
     padding: 3vh;
+    background-color: var(--gray);
+    visibility:hidden;
+    transition: ease-in-out 0.3s ;  
+    z-index: 1;
+}
 
+.div-form-open {
+    transform: translate(-50%,-50%) scale(1);
+    visibility: visible;
+}
+
+#overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.5);
     visibility: hidden;
 }
+
 
 form {
     display: flex;

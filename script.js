@@ -1,7 +1,24 @@
 const Main = document.querySelector('main')
+const AddBtn = document.getElementById('addBtn')
+const Modal = document.querySelector('.form-div')
+const Overaly = document.getElementById('overlay')
 // declare empty library 
 let library = [];
 
+
+AddBtn.addEventListener('click',()=>{
+    Modal.classList.add('div-form-open')
+    Overaly.style.visibility = 'visible'
+})
+
+Overaly.addEventListener('click',()=>{
+    Modal.classList.remove('div-form-open')
+    Overaly.style.visibility = 'hidden'
+})
+
+document.addEventListener('keydown', e =>{
+        if (e.key === 'Escape' && Overaly.style.visibility == 'visible')RemoveModal()
+    });
 // book object constructor 
 function Book (Title, Author, Pages, Read) {
     this.Title = Title;
@@ -11,19 +28,19 @@ function Book (Title, Author, Pages, Read) {
 
 }
 
-function createBook (Title,Author,Pages,Read) {
+function CreateBook (Title,Author,Pages,Read) {
     let newbook = new Book(Title,Author,Pages,Read)
     library.push(newbook)
 }
 
-function createBookElement (tag, text, className) {
+function CreateBookElement (tag, text, className) {
     const BookElement = document.createElement(tag)
     BookElement.innerText = text
     BookElement.classList.add(className)
     return BookElement
 }
 
-function createReadButton (read=false) {
+function CreateReadButton (read=false) {
     const ReadButton = document.createElement('button')
     ReadButton.classList.add('book-readStatus')
     if (read) {
@@ -56,11 +73,11 @@ function Renderbooks (){
         const bookItem = document.createElement('div');
         bookItem.setAttribute('class','book-card')
         bookItem.setAttribute('data-index' , library.indexOf(book))
-        bookItem.appendChild(createBookElement('h2',book.Title,'book-title'));
-        bookItem.appendChild(createBookElement('div',book.Author,'book-title'));
-        bookItem.appendChild(createBookElement('div',book.Pages,'book-pages'));
-        bookItem.appendChild(createReadButton(book.Read))
-        bookItem.appendChild(createBookElement('button', 'remove','remove-btn'))
+        bookItem.appendChild(CreateBookElement('h2',`"${book.Title}"`,'book-title'));
+        bookItem.appendChild(CreateBookElement('div',`by ${book.Author}`,'book-title'));
+        bookItem.appendChild(CreateBookElement('div',book.Pages,'book-pages'));
+        bookItem.appendChild(CreateReadButton(book.Read))
+        bookItem.appendChild(CreateBookElement('button', 'remove','remove-btn'))
         
         Main.appendChild(bookItem)
     };
@@ -75,7 +92,7 @@ function CreateBooks(){
 
     ReadBtns.forEach(button => {
         button.addEventListener('click',()=>ChangeReadStatus(button))
-    })
+    });
     
     RemoveBtns.forEach(button => {
         button.addEventListener('click',()=>{
@@ -88,18 +105,22 @@ function CreateBooks(){
             button.parentNode.remove()
         });
     });
-
-
 };
 
 function RemoveBooks () {
     Main.innerHTML=''
 }
 
-createBook('gggg','sdfsdf',454,false)
-createBook('ggg','asd',454,false)
-createBook('gg','asdsad',567,true)
-createBook('fgg','asdsgg',867,true)
+function RemoveModal () {
+    Modal.classList.remove('div-form-open')
+    Overaly.style.visibility = 'hidden'
+}
+
+
+CreateBook('gggg','sdfsdf',454,false)
+CreateBook('ggg','asd',454,false)
+CreateBook('gg','asdsad',567,true)
+CreateBook('fgg','asdsgg',867,true)
 
 CreateBooks()
 
