@@ -12,7 +12,6 @@ h3 {
 }
 
 header {
-    text-align: center;
     padding: 1vw;
     background: yellowgreen;
 }
@@ -30,15 +29,24 @@ header {
     bottom: 0;
     right: 0;
 }
-
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
 
 main {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px,1fr) );
 
+    gap: 2rem;
 }
 .book-card {
     border: 1px solid red;
+
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
 }

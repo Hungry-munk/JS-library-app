@@ -40,6 +40,7 @@ function createReadButton (read=false) {
 createBook('gggg','sdfsdf',454,false)
 createBook('ggg','asd',454,false)
 createBook('gg','asdsad',567,true)
+createBook('gg','asdsad',567,true)
 
 for (const book of library){
     const bookItem = document.createElement('div');
@@ -52,3 +53,4 @@ for (const book of library){
     
     Main.appendChild(bookItem)
 }
+
