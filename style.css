@@ -7,6 +7,10 @@
     --green:#9fff9c;
     --light-red: #ff9c9c;
     --white: #fffbfb;
+    --border-radius:10px;
+
+    --button-height:2.5rem;
+    --button-font-size:1.3rem;
 }
 
 body,
@@ -24,8 +28,15 @@ body{
 }
 
 header {
-    padding: 1vw;
+    padding: 2.7vh;
     background: var(--white);
+    margin-bottom: 10%;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3) ;
+    font-size: 1.3rem;
+}
+
+button {
+    cursor: pointer;
 }
 
 #addBtn {
@@ -36,19 +47,29 @@ header {
     border: none;
     width: 2rem;
     height: 2rem;
+    background-color: var(--green);
+    transition: 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 
 #github {
     position: fixed;
     bottom: 100px;
     right: 50px;
     width: 2rem;
-    height:2rem; 
+    height:var(--button-height); 
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 1s ease-in-out;
 }
 
+#addBtn:hover, #github:hover {
+    transform: rotate(360deg);
+}
 
 .main {
     max-width: 1200px;
@@ -72,17 +93,33 @@ main {
     align-items: center;
     gap: 1rem;
     padding: 2rem;
-    max-width: 500px;
+    max-width: 350px;
+    border-radius: var(--border-radius);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2) ;
 }
 
 .remove-btn,
 .book-readStatus {
     width:80%;
-    height: 2.4rem;
+    height: var(--button-height);
+    font-size: var(--button-font-size);
+    border-radius: var(--border-radius);
+    border: none;
+}
+
+
+.book-readStatus.read {
+    background-color: var(--green);
+}
+
+.book-readStatus.unread {
+    background-color: var(--light-red);
+}
 
 /* Modal */
-}
 .form-div{
+    width: clamp(285px, 20%, 350px);
+    border-radius: var(--border-radius);
     position: absolute;
     left: 50%;
     top: 50%;
@@ -115,6 +152,60 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+}
+
+.modal-input {
+    border: none;
+    padding: 0.6rem;
+    border-radius: 8px;
+    width: 100%;
+    font-size: var(--button-font-size);
+}
+
+#submit-btn{
+    font-size: var(--button-font-size);
+    width: 100%;
+    height:var(--button-height);
+    border: none;
+    background-color: var(--green);
+    border-radius: var(--border-radius);
+}
+
+.book-readStatus:hover , #submit-btn:hover {
+    filter: brightness(90%);
+}
+
+#isRead-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    position: relative;
+    background-color: var(--white);
+    width: 3rem;
+    height: 1rem;
+    border-radius: var(--border-radius);
+
+}
+input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--light-red);
+    border-radius: var(--border-radius);
+    transform: scale(1.2);
+    transition: 0.7s ease all;
+    left: 0;
+
+}
+
+input:checked[type="checkbox"]::before {
+    background-color: var(--green);
+    left: 2rem;
 }
 
 /* css for mobile */

@@ -35,16 +35,15 @@
 
 <div class="form-div">
     <form id="form" >
-
         <h3>add new book</h3>
-        <input type="text" placeholder="author" maxlength="100" required id="modal-title">
-        <input type="text" placeholder="author" maxlength="50" required id="modal-author">
-        <input type="number" placeholder="pages" max="10000"  required id="modal-pages">
-        <div>
+        <input type="text" class="modal-input" placeholder="title" maxlength="100" required id="modal-title">
+        <input type="text" class="modal-input" placeholder="author" maxlength="50" required id="modal-author">
+        <input type="number" class="modal-input" placeholder="pages" max="10000"  required id="modal-pages">
+        <div id="isRead-container">
             <label for="isRead">Finish reading?</label>
             <input type="checkbox" id="isRead "class='isRead'>
         </div>
-        <button type="button" id="submit-btn">Add book</button>
+        <button type="button" id="submit-btn">add book</button>
     </form>
 </div>
 <div id="overlay" style="visibility: hidden;"></div>
