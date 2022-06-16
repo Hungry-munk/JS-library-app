@@ -97,7 +97,7 @@ function CreateBooks(){
     const ReadBtns = document.querySelectorAll('.book-readStatus')
 
     ReadBtns.forEach(button => {
-        button.addEventListener('click',()=>ChangeReadStatus(button))
+        button.addEventListener('click',ChangeReadStatus.bind(this,button))
     });
     
     RemoveBtns.forEach(button => {
