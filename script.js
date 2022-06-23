@@ -26,12 +26,15 @@ SubmitBtn.addEventListener('click',()=>{
 })
 
 // book object constructor 
-function Book (Title, Author, Pages, Read) {
-    this.Title = Title;
-    this.Author = Author;
-    this.Pages = Pages;
-    this.Read = Read
 
+// changed cunstroctor function into a class
+class Book {
+    constructor(Title,Author,Pages,Read) {
+        this.Title = Title
+        this.Author = Author
+        this.Pages = Pages
+        this.Read = Read
+    }
 }
 
 function CreateBook (Title,Author,Pages,Read) {
